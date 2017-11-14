@@ -20,9 +20,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:Path');
+        $paths = $repository->findAll();
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            'paths' => $paths
         ]);
     }
 
@@ -39,7 +41,7 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($path);
             $em->flush();
-            return new Response('Ajouté ');
+            //return new Response('Ajouté ');
         }
         return $this->render(':default:form.html.twig', [
             'form'=> $form->createView()
