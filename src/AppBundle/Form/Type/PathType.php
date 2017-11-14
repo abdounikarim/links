@@ -1,16 +1,14 @@
 <?php
 
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 
-use AppBundle\Entity\Path;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
-class ProjectType extends AbstractType
+class PathType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -20,14 +18,7 @@ class ProjectType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('imageFile', FileType::class)
-            ->add('paths', EntityType::class, [
-                'label' => 'Parcours',
-                'class' => 'AppBundle\Entity\Path',
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => true
-            ]);
+            ->add('imageFile', FileType::class);
     }
     
     /**
@@ -36,7 +27,7 @@ class ProjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Project'
+            'data_class' => 'AppBundle\Entity\Path'
         ));
     }
 
@@ -45,7 +36,7 @@ class ProjectType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_project';
+        return 'appbundle_path';
     }
 
 

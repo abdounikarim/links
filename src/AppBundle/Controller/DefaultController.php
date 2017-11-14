@@ -2,10 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Link;
 use AppBundle\Entity\Path;
 use AppBundle\Entity\Project;
-use AppBundle\Form\PathType;
-use AppBundle\Form\ProjectType;
+use AppBundle\Form\Type\LinkType;
+use AppBundle\Form\Type\PathType;
+use AppBundle\Form\Type\ProjectType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,6 +62,26 @@ class DefaultController extends Controller
             return new Response('Ajouté ');
         }
         return $this->render(':default:form.html.twig', [
+            'form'=> $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/addlink", name="add_link")
+     */
+    public function addLinkAction(Request $request)
+    {
+        $link = new Link();
+        $form = $this->createForm(LinkType::class, $link);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($link);
+            $em->flush();
+            return new Response('Lien ajouté');
+        }
+        return $this->render(':default:link.html.twig', [
             'form'=> $form->createView()
         ]);
     }
