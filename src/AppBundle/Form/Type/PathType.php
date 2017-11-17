@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form\Type;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -9,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class PathType extends AbstractType
 {
@@ -27,8 +27,9 @@ class PathType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description du parcours',
+                'required' => false,
                 'attr' => [
-                    'class' => 'form-control'
+                    'class' => 'form-control tinymce'
                 ]
             ])
             ->add('url', UrlType::class, [

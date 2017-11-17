@@ -86,7 +86,8 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($path);
             $em->flush();
-            //return new Response('Ajouté ');
+            $this->addFlash('add_path', 'Le parcours a bien été ajouté');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render(':form:add_path.html.twig', [
             'form'=> $form->createView()
@@ -106,7 +107,8 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
             $em->flush();
-            return new Response('Ajouté ');
+            $this->addFlash('add_project', 'Le projet a bien été ajouté');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render(':form:add_project.html.twig', [
             'form'=> $form->createView()
@@ -126,7 +128,8 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($link);
             $em->flush();
-            return new Response('Lien ajouté');
+            $this->addFlash('add_link', 'Le lien a bien été ajouté');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render(':form:add_link.html.twig', [
             'form'=> $form->createView()

@@ -7,6 +7,23 @@
             <header>
                 <h1>Liens utiles</h1>
             </header>
+            <div class="flash_messages">
+                {% for message in app.flashes('add_path') %}
+                    <div class="flash-notice alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('add_project') %}
+                    <div class="flash-notice alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('add_link') %}
+                    <div class="flash-notice alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
             <section class="tiles">
                 {% for path in paths %}
                 <article class="{{ "style%s"|format(path.id) }}">
@@ -15,9 +32,6 @@
                     </span>
                     <a href="{{ path('path', {'path_id': path.id}) }}">
                         <h2>{{ path.name }}</h2>
-                        <div class="content">
-                            <p>{{ path.description }}</p>
-                        </div>
                     </a>
                 </article>
                 {% endfor %}
