@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un lien{% endblock %}
+
+{% block main %}
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.url) }}
+            {{ form_widget(form.url) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.projects) }}
+            {{ form_widget(form.projects) }}
+        </div>
+        <input type="submit">
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

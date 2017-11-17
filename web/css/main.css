@@ -3382,12 +3382,19 @@ button:hover{
 	background-color: gray !important;
 	box-shadow: inset 0 0 0 2px #868e96;
 }
+.description img{
+	width: 100%;
+}
 .modal{
 	margin-top: 50px;
 }
 .modal-body p{
 	margin: 0;
 }
+button a {
+	color: white !important;
+}
+
 @media (min-width: 768px) {
 
 	.image.main {
@@ -3420,6 +3427,14 @@ button:hover{
 		margin: 0;
 		vertical-align: top;
 		margin-bottom: -1%;
+	}
+	.hdescription{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.description img{
+		width: 300px;
 	}
 
 }

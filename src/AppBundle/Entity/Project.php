@@ -36,9 +36,9 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="url", type="string", length=255)
      */
-    private $description;
+    private $url;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Path", cascade={"persist"})
@@ -153,27 +153,27 @@ class Project
     }
 
     /**
-     * Set description
+     * Set url
      *
-     * @param string $description
+     * @param string $url
      *
      * @return Project
      */
-    public function setDescription($description)
+    public function setUrl($url)
     {
-        $this->description = $description;
+        $this->url = $url;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get url
      *
      * @return string
      */
-    public function getDescription()
+    public function getUrl()
     {
-        return $this->description;
+        return $this->url;
     }
 
     /**

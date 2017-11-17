@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class LinkRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllLinksFromProject($project_id)
+    {
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT l, project
+                FROM AppBundle:Link l
+                JOIN l.projects project
+                WHERE project.id = :id'
+        )->setParameter('id', $project_id);
+        return $query->getResult();
+    }
 }

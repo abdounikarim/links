@@ -41,6 +41,13 @@ class Path
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255)
+     */
+    private $url;
+
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="path_image", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName")
@@ -168,5 +175,28 @@ class Path
     {
         return $this->description;
     }
-}
 
+    /**
+     * Set url
+     *
+     * @param string $url
+     *
+     * @return Path
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+}

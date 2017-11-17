@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil {% endblock %}
+{% block title %}Accueil{% endblock %}
 {% block main %}
     <div id="main">
         <div class="inner">
@@ -11,9 +11,9 @@
                 {% for path in paths %}
                 <article class="{{ "style%s"|format(path.id) }}">
                     <span class="image">
-                        <img src="{{ asset(image_link ~ '/' ~path.image.name) }}">
+                        <img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(path,'imageFile') }}">
                     </span>
-                    <a href="dwj.html">
+                    <a href="{{ path('path', {'path_id': path.id}) }}">
                         <h2>{{ path.name }}</h2>
                         <div class="content">
                             <p>{{ path.description }}</p>

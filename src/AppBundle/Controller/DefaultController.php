@@ -29,7 +29,52 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/addpath", name="add_path")
+     * @Route("/path/{path_id}", name="path")
+     */
+    public function pathAction($path_id){
+        $em = $this->getDoctrine()->getManager();
+        $repositoryPath = $em->getRepository('AppBundle:Path');
+        $path = $repositoryPath->find($path_id);
+        $repositoryProject = $em->getRepository('AppBundle:Project');
+        $projects = $repositoryProject->findAllProjectsFromPath($path_id);
+        $repositoryLink = $em->getRepository('AppBundle:Link');
+        foreach ($projects as $project){
+            $links = $repositoryLink->findAllLinksFromProject($project->getId());
+            dump($links);
+        }
+
+        return $this->render(':default:path.html.twig', [
+            'path' => $path,
+            'projects' => $projects
+        ]);
+    }
+
+    /**
+     * @Route("/project/{project_id}", name="project")
+     */
+    public function projectAction($project_id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repositoryProject = $em->getRepository('AppBundle:Project');
+        $project = $repositoryProject->find($project_id);
+        $repositoryLink = $em->getRepository('AppBundle:Link');
+        $links = $repositoryLink->findAllLinksFromProject($project_id);
+        return $this->render('default/project.html.twig', [
+            'project' => $project,
+            'links' => $links,
+        ]);
+    }
+
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function adminAction()
+    {
+        return $this->render('admin/admin.html.twig');
+    }
+
+    /**
+     * @Route("/admin/add/path", name="add_path")
      */
     public function addPathAction(Request $request)
     {
@@ -43,13 +88,13 @@ class DefaultController extends Controller
             $em->flush();
             //return new Response('Ajouté ');
         }
-        return $this->render(':default:form.html.twig', [
+        return $this->render(':form:add_path.html.twig', [
             'form'=> $form->createView()
         ]);
     }
 
     /**
-     * @Route("/addproject", name="add_project")
+     * @Route("/admin/add/project", name="add_project")
      */
     public function addProjectAction(Request $request)
     {
@@ -63,13 +108,13 @@ class DefaultController extends Controller
             $em->flush();
             return new Response('Ajouté ');
         }
-        return $this->render(':default:form.html.twig', [
+        return $this->render(':form:add_project.html.twig', [
             'form'=> $form->createView()
         ]);
     }
 
     /**
-     * @Route("/addlink", name="add_link")
+     * @Route("/admin/add/link", name="add_link")
      */
     public function addLinkAction(Request $request)
     {
@@ -83,7 +128,7 @@ class DefaultController extends Controller
             $em->flush();
             return new Response('Lien ajouté');
         }
-        return $this->render(':default:link.html.twig', [
+        return $this->render(':form:add_link.html.twig', [
             'form'=> $form->createView()
         ]);
     }

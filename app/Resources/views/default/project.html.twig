@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet {{ project.name }}{% endblock %}
+{% block main %}
+    <div id="main">
+        <div class="inner">
+            <div class="block_course_project">
+                <div class="block_project">
+                    <span class="image main"><img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(project,'imageFile') }}"></span>
+                    <div class="content_project">
+                        <h2>Projet {{ project.id }} - {{ project.name }}</h2>
+                        <p><a href="{{ project.url }}" target="_blank">Lien vers l'énoncé</a></p>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-responsive-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Lien</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for link in links %}
+                    <tr>
+                        <td scope="col">{{ link.name }}</td>
+                        <td scope="col"><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

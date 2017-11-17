@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class ProjectRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllProjectsFromPath($path_id){
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT p, path
+                  FROM AppBundle:Project p
+                  JOIN p.paths path
+                  WHERE path.id= :id'
+        )->setParameter('id', $path_id);
+        return $query->getResult();
+    }
 }
