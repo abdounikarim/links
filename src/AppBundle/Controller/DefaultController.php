@@ -11,7 +11,6 @@ use AppBundle\Form\Type\ProjectType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -40,7 +39,6 @@ class DefaultController extends Controller
         $repositoryLink = $em->getRepository('AppBundle:Link');
         foreach ($projects as $project){
             $links = $repositoryLink->findAllLinksFromProject($project->getId());
-            dump($links);
         }
 
         return $this->render(':default:path.html.twig', [
