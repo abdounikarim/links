@@ -120,6 +120,8 @@ class DefaultController extends Controller
      */
     public function addLinkAction(Request $request)
     {
+
+
         $link = new Link();
         $form = $this->createForm(LinkType::class, $link);
         $form->handleRequest($request);
