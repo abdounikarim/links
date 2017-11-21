@@ -5,6 +5,7 @@
 <div id="main">
     <div class="inner">
         <div class="description">
+            {{ dump(path.description)}}
             <div class="hdescription">
                 <h1><a href="{{ path.url }}" target="_blank">Parcours {{ path.name }}</h1>
                 <div><img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(path,'imageFile') }}"></div>

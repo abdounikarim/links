@@ -9,6 +9,7 @@ use AppBundle\Form\Type\LinkType;
 use AppBundle\Form\Type\PathType;
 use AppBundle\Form\Type\ProjectType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -36,10 +37,6 @@ class DefaultController extends Controller
         $path = $repositoryPath->find($path_id);
         $repositoryProject = $em->getRepository('AppBundle:Project');
         $projects = $repositoryProject->findAllProjectsFromPath($path_id);
-        $repositoryLink = $em->getRepository('AppBundle:Link');
-        foreach ($projects as $project){
-            $links = $repositoryLink->findAllLinksFromProject($project->getId());
-        }
 
         return $this->render(':default:path.html.twig', [
             'path' => $path,
@@ -65,6 +62,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/admin", name="admin")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function adminAction()
     {
