@@ -54,6 +54,12 @@ class AdminController extends Controller
     {
         $form = $this->createForm(PathType::class, $path);
         $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+        }
         return $this->render(':form:path.html.twig', [
            'form' => $form->createView()
         ]);
@@ -87,6 +93,12 @@ class AdminController extends Controller
     {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+        }
         return $this->render(':form:project.html.twig', [
             'form' => $form->createView()
         ]);
