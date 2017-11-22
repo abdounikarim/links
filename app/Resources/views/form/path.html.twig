@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un parcours{% endblock %}
+{% block title %}Parcours{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -8,6 +8,11 @@
         <div class="form-group">
             {{ form_label(form.name) }}
             {{ form_widget(form.name) }}
+            {% if form_errors(form.name) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.name) }}
+                </div>
+            {% endif %}
         </div>
         <div class="form-group">
             {{ form_label(form.description) }}

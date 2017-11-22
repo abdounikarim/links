@@ -4,6 +4,7 @@
 {% block main %}
     <div id="main">
         <div class="inner">
+            <a href="{{ path('homepage') }}">Retour à l'accueil</a>
             <div class="block_course_project">
                 <div class="block_project">
                     <span class="image main"><img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(project,'imageFile') }}"></span>
@@ -29,6 +30,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <a href="{{ path('homepage') }}">Retour à l'accueil</a>
         </div>
     </div>
 {% endblock %}

@@ -9,6 +9,7 @@
                 <h1><a href="{{ path.url }}" target="_blank">Parcours {{ path.name }}</h1>
                 <div><img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(path,'imageFile') }}"></div>
             </div>
+            <a href="{{ path('homepage') }}">Retour à l'accueil</a>
             <p>Infos</p>
             <p>Outils</p>
             <ul>
@@ -53,6 +54,7 @@
         </div>
         <br>
         {% endfor %}
+        <a href="{{ path('homepage') }}">Retour à l'accueil</a>
     </div>
 </div>
 {% endblock %}
