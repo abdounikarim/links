@@ -8,6 +8,7 @@ use AppBundle\Entity\Project;
 use AppBundle\Form\Type\LinkType;
 use AppBundle\Form\Type\PathType;
 use AppBundle\Form\Type\ProjectType;
+use AppBundle\Form\Type\UserForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -61,8 +62,28 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/register", name="register")
+     */
+    public function registerAction(Request $request)
+    {
+        $form = $this->createForm(UserForm::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $user = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('form/register.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
      * @Route("/admin", name="admin")
-     * @Security("is_granted('ROLE_ADMIN')")
+     * @Security("is_granted('ROLE_USER')")
      */
     public function adminAction()
     {
