@@ -17,7 +17,11 @@
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <a href="{{ path('add_path') }}">Ajouter un parcours</a><br>
+                <a href="{{ path('add_project') }}">Ajouter un projet</a><br>
+                <a href="{{ path('add_link') }}">Ajouter un lien</a>
+            </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
         </div>
