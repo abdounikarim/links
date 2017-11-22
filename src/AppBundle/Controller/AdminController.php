@@ -75,7 +75,7 @@ class AdminController extends Controller
             $this->addFlash('add_project', 'Le projet a bien été ajouté');
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('project.html.twig', [
+        return $this->render('form/project.html.twig', [
             'form'=> $form->createView()
         ]);
     }
@@ -108,7 +108,7 @@ class AdminController extends Controller
             $this->addFlash('add_link', 'Le lien a bien été ajouté');
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('link.html.twig', [
+        return $this->render('form/link.html.twig', [
             'form'=> $form->createView()
         ]);
     }
