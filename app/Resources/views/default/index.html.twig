@@ -30,7 +30,7 @@
                     <span class="image">
                         <img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(path,'imageFile') }}">
                     </span>
-                    <a href="{{ path('path', {'path_id': path.id}) }}">
+                    <a href="{{ path('path', {'path_id': path.id}) }}" target="_blank">
                         <h2>{{ path.name }}</h2>
                     </a>
                 </article>

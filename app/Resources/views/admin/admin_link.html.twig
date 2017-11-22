@@ -1,0 +1,23 @@
+<div class="tab-pane fade" id="link" role="tabpanel" aria-labelledby="link-tab">
+    <table class="table table-bordered table-responsive-sm">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Lien</th>
+            <th scope="col">Éditer</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for link in links %}
+            <tr>
+                <td scope="col">{{ link.name }}</td>
+                <td scope="col"><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></td>
+                <td scope="col"><a href="{{ path('edit_link', {'link': link.id}) }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                <td scope="col"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('add_link') }}" target="_blank">Ajouter un lien</a>
+</div>

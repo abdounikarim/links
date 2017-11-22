@@ -1,0 +1,23 @@
+<div class="tab-pane fade" id="project" role="tabpanel" aria-labelledby="project-tab">
+    <table class="table table-bordered table-responsive-sm">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Lien</th>
+            <th scope="col">Éditer</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td scope="col"><a href="{{ path('project', {'project_id': project.id}) }}" target="_blank">{{ project.name }}</a></td>
+                <td scope="col"><a href="{{ project.url }}" target="_blank">{{ project.url }}</a></td>
+                <td scope="col"><a href="{{ path('edit_project', {'project': project.id}) }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                <td scope="col"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('add_project') }}" target="_blank">Ajouter un projet</a>
+</div>

@@ -23,7 +23,15 @@ class AdminController extends Controller
      */
     public function adminAction()
     {
-        return $this->render('admin/admin.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $paths = $em->getRepository('AppBundle:Path')->findAll();
+        $projects = $em->getRepository('AppBundle:Project')->findAll();
+        $links = $em->getRepository('AppBundle:Link')->findAll();
+        return $this->render('admin/admin.html.twig', [
+            'paths' => $paths,
+            'projects' => $projects,
+            'links' => $links
+        ]);
     }
 
     /**

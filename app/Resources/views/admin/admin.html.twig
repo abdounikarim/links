@@ -7,23 +7,19 @@
         <h1>Espace administration</h1>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                <a class="nav-link active" id="path-tab" data-toggle="tab" href="#path" role="tab" aria-controls="path" aria-selected="true">Parcours</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="project-tab" data-toggle="tab" href="#project" role="tab" aria-controls="project" aria-selected="false">Projets</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                <a class="nav-link" id="link-tab" data-toggle="tab" href="#link" role="tab" aria-controls="link" aria-selected="false">Liens</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <a href="{{ path('add_path') }}" target="_blank">Ajouter un parcours</a><br>
-                <a href="{{ path('add_project') }}" target="_blank">Ajouter un projet</a><br>
-                <a href="{{ path('add_link') }}" target="_blank">Ajouter un lien</a>
-            </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+            {% include 'admin/admin_path.html.twig' %}
+            {% include 'admin/admin_project.html.twig' %}
+            {% include 'admin/admin_link.html.twig' %}
         </div>
     </div>
 {% endblock %}

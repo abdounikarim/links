@@ -1,0 +1,23 @@
+<div class="tab-pane fade show active" id="path" role="tabpanel" aria-labelledby="path-tab">
+    <table class="table table-bordered table-responsive-sm">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Lien</th>
+            <th scope="col">Éditer</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for path in paths %}
+            <tr>
+                <td scope="col"><a href="{{ path('path', {'path_id': path.id}) }}" target="_blank">{{ path.name }}</a></td>
+                <td scope="col"><a href="{{ path.url }}" target="_blank">{{ path.url }}</a></td>
+                <td scope="col"><a href="{{ path('edit_path', {'path': path.id}) }}" target="_blank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                <td scope="col"><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('add_path') }}" target="_blank">Ajouter un parcours</a>
+</div>
