@@ -3359,12 +3359,14 @@
 .block_project{
 	background-color: #f2f2f2;
 	padding: 10px;
+	display: flex;
+	flex-direction: column;
 }
-.block_course {
-	background-color: #d5d5d5;
-	padding: 10px;
-	padding-bottom: 0;
-
+.image.main{
+	margin-bottom: 10px;
+}
+.content_project{
+	text-align: center;
 }
 .btnbtn{
 	position: relative;
@@ -3396,37 +3398,29 @@ button a {
 }
 
 @media (min-width: 768px) {
-
+	.block_project{
+		flex-direction: row;
+	}
 	.image.main {
-		display: inline-block;
 		margin: 0 5px 0 0;
-		width: 25%;
-		vertical-align: top;
+		flex: 1;
+	}
+	.image img{
+		width: 100%;
 	}
 	.content_project{
-		display: inline-block;
-		width: 70%;
 		margin: 0;
-		vertical-align: top;
+		margin-left: 5px;
+		margin-top: -5px;
+		flex: 3;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
 	}
-	.block_course{
-		background-color: #d5d5d5;
-		width: 76%;
-		margin: 2% auto;
-		padding-bottom: 0.5%;
-	}
-	.image.main.course {
-		display: inline-block;
-		margin: 0 5px 0 0;
-		width: 25%;
-		vertical-align: top;
-	}
-	.content_course{
-		display: inline-block;
-		width: 50%;
+	h2, p{
 		margin: 0;
-		vertical-align: top;
-		margin-bottom: -1%;
 	}
 	.hdescription{
 		display: flex;

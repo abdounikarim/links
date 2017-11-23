@@ -31,7 +31,8 @@ class ProjectType extends AbstractType
                 ]
             ])
             ->add('imageFile', FileType::class, [
-                'label' => 'Image associée'
+                'label' => 'Image associée',
+                'required' => false
             ])
             ->add('paths', EntityType::class, [
                 'label' => 'Parcours associé',
