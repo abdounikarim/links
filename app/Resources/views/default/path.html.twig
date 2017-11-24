@@ -10,36 +10,9 @@
                 <div><img src="{{ app.request.server.get('BASE') ~ vich_uploader_asset(path,'imageFile') }}"></div>
             </div>
             <a href="{{ path('homepage') }}">Retour à l'accueil</a>
-            <p>Infos</p>
-            <p>Outils</p>
-            <ul>
-                <li><a href="https://zoom.us/download">Zoom</a></li>
-                <li>Éditeur de texte : <a href="http://brackets.io/">Brackets</a>, <a href="https://atom.io/">Atom</a> ou <a href="https://www.sublimetext.com/">Sublime Text</a></li>
-                <li>IDE : <a href="https://www.jetbrains.com/webstorm/download/#section=mac">WebStorm (HTML, CSS, JS)</a>, <a href="https://www.jetbrains.com/phpstorm/download/">PHPStorm</a></li>
-                <li>Serveur Web : <a href="https://www.mamp.info/en/">MAMP (Mac, Windows)</a>, <a href="http://www.wampserver.com/">WAMP(Windows)</a>, <a href="https://www.apachefriends.org/fr/index.html">XAMPP(Multi)</a></li>
-            </ul>
-
-            <p>Législation</p>
-            <ul>
-                <li><a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F23431">Droits d'auteur</a></li>
-                <li><a href="https://www.service-public.fr/particuliers/vosdroits/F32103">Droits d'image</a></li>
-                <li><a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F31228">Mentions légales</a></li>
-                <li><a href="http://www.subdelirium.com/generateur-de-mentions-legales/">Générateur de mentions légales</a></li>
-                <li><a href="https://www.cnil.fr/fr/site-web-cookies-et-autres-traceurs">Cookies</a></li>
-                <li><a href="https://www.cnil.fr/fr/cookies-traceurs-que-dit-la-loi">CNIL</a></li>
-            </ul>
-
-            <p>Ressources</p>
-            <ul>
-                <li><a href="https://pixabay.com">Images libres de droits : Pixabay</a></li>
-                <li><a href="https://www.pexels.com">Images libres de droits : Pexels</a></li>
-            </ul>
-
-            <p>Soutenance</p>
-            <ul>
-                <li><a href="https://openclassrooms.com/courses/devenez-mentor-sur-openclassrooms/je-valide-un-projet#/id/r-3690352">Exemple de soutenance</a></li>
-                <li>Préparer un plan de présentation</li>
-            </ul>
+            <div class="path_description">
+                {{ path.description|raw }}
+            </div>
         </div>
         {% for project in projects %}
         <div class="block_course_project">
